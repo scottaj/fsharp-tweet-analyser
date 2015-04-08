@@ -33,4 +33,14 @@ installPackageIfMissing "FAKE" fakeIsInstalled
 let nunitRunnerIsInstalled = System.IO.Directory.Exists "packages/NUnit.Runners"
 installPackageIfMissing "NUnit.Runners" nunitRunnerIsInstalled
 
+let nugetIsInstalled = System.IO.Directory.Exists "tools/Nuget"
+if not nugetIsInstalled then
+  System.IO.Directory.CreateDirectory "./tools/Nuget" |> ignore
+  let installCommand = command "wget" "-O ./tools/Nuget/nuget.exe https://nuget.org/nuget.exe"
+  if installCommand = 0 then
+    printfn "Successfully downloaded nuget"
+  else
+    printfn "Failed to download nuget!"
+
+
 command "mono" "packages/FAKE/tools/FAKE.exe build.fsx"

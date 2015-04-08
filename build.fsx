@@ -2,6 +2,8 @@
 #r @"packages/FAKE/tools/FakeLib.dll"
 open Fake
 
+RestorePackages()
+
 let projectName = "tweet-analyser-enterprise-ready-edition"
 let srcTarget = sprintf "./%s/**/*.fsproj" projectName
 let testTarget = sprintf "./%s-tests/**/*.fsproj" projectName
