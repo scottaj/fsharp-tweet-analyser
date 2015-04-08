@@ -1,7 +1,7 @@
-﻿namespace TweetAnalyser
+﻿namespace TweetAnalyserTests
 open NUnit.Framework
 open FsUnit
-open Tweets
+open TweetAnalyser.Tweets
 
 [<TestFixture>]
 type ``a simple tweet`` ()=
