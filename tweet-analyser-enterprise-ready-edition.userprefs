@@ -1,1 +1,19 @@
-﻿<Properties StartupItem="tweet-analyser-enterprise-ready-edition/tweet-analyser-enterprise-ready-edition.fsproj" />
+﻿<Properties StartupItem="tweet-analyser-enterprise-ready-edition/tweet-analyser-enterprise-ready-edition.fsproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="tweet-analyser-enterprise-ready-edition/packages.config">
+    <Files>
+      <File FileName="tweet-analyser-enterprise-ready-edition/packages.config" Line="1" Column="1" />
+      <File FileName="tweet-analyser-enterprise-ready-edition/Program.fs" Line="1" Column="1" />
+      <File FileName="tweet-analyser-enterprise-ready-edition/AssemblyInfo.fs" Line="7" Column="24" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

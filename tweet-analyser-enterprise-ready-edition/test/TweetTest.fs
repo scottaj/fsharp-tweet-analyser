@@ -13,7 +13,7 @@ type ``a simple tweet`` ()=
 
   [<Test>]
   member x.``contains the tweet length`` ()=
-    tweet.Length |> should equal 7
+    tweet.Length |> should equal 14
 
   [<Test>]
   member x.``updates the length when the text changes`` ()=

@@ -6,12 +6,10 @@ RestorePackages()
 
 let projectName = "tweet-analyser-enterprise-ready-edition"
 let srcTarget = sprintf "./%s/**/*.fsproj" projectName
-let testTarget = sprintf "./%s-tests/**/*.fsproj" projectName
 let buildDir = "./build"
-let testDir = "./test"
 
 Target "Clean" (fun _ ->
-    CleanDirs [buildDir; testDir;]
+    CleanDirs [buildDir;]
 )
 
 Target "Build" (fun _ ->
@@ -20,18 +18,12 @@ Target "Build" (fun _ ->
      |> Log "AppBuild-Output: "
 )
 
-Target "BuildTest" (fun _ ->
-  !! testTarget
-     |> MSBuildRelease testDir "Build"
-     |> Log "AppBuild-Output: "
-)
-
 Target "Test" (fun _ ->
-    !! (sprintf "%s/%s-tests.dll" testDir projectName)
+    !! (sprintf "%s/%s.exe" buildDir projectName)
       |> NUnit (fun p ->
           {p with
              DisableShadowCopy = true;
-             OutputFile = testDir + "/TestResults.xml" })
+             OutputFile = buildDir + "/TestResults.xml" })
 )
 
 Target "Default" (fun _ ->
@@ -40,7 +32,6 @@ Target "Default" (fun _ ->
 
 "Clean"
   ==> "Build"
-  ==> "BuildTest"
   ==> "Test"
   ==> "Default"
 
