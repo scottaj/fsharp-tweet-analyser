@@ -11,3 +11,8 @@ module Tweets =
 
     member this.Valid
       with get() = this.Length <= maxLength
+
+    member this.HashTags
+      with get() =
+        let tokens = this.Text.Split ' '
+        tokens |> Array.filter (fun word -> word.StartsWith "#")

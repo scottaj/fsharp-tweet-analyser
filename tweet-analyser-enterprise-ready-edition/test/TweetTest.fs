@@ -32,3 +32,18 @@ type ``a tweet that is too long`` ()=
   member x.``is valid again if it is shortened`` ()=
     tweet.Text <- "A valid tweet"
     tweet.Valid |> should equal true
+
+[<TestFixture>]
+type ``a tweet with #hashtags`` ()=
+  let tweet = Tweet("a #tweet with some #hashtags in it")
+
+  [<Test>]
+  member x.``has a list of hashtags`` ()=
+    tweet.HashTags |> should haveLength 2
+    tweet.HashTags |> should contain "#tweet"
+    tweet.HashTags |> should contain "#hashtags"
+
+  [<Test>]
+  member x.``has an empty #hashtags list if the tweet has no hashtags`` ()=
+    tweet.Text <- "no hashtags"
+    tweet.HashTags |> should haveLength 0
