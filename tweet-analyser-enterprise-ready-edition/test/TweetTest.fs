@@ -26,12 +26,12 @@ type ``a tweet that is too long`` ()=
 
   [<Test>]
   member x.``is marked as invalid`` ()=
-    tweet.Valid |> should equal false
+    tweet.Valid |> should be False
 
   [<Test>]
   member x.``is valid again if it is shortened`` ()=
     tweet.Text <- "A valid tweet"
-    tweet.Valid |> should equal true
+    tweet.Valid |> should be True
 
 [<TestFixture>]
 type ``a tweet with #hashtags`` ()=
