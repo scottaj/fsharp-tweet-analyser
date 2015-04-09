@@ -4,6 +4,9 @@ module Tweets =
 
     let maxLength = 140
 
+    let findTokensThatStartWith (tokens:string[]) (startsWith:string) =
+      tokens |> Array.filter (fun word -> word.StartsWith startsWith)
+
     member val Text = text with get, set
 
     member this.Length
@@ -13,6 +16,10 @@ module Tweets =
       with get() = this.Length <= maxLength
 
     member this.HashTags
-      with get() =
-        let tokens = this.Text.Split ' '
-        tokens |> Array.filter (fun word -> word.StartsWith "#")
+      with get() = findTokensThatStartWith this.Tokens "#"
+
+    member this.Mentions
+      with get() = findTokensThatStartWith this.Tokens "@"
+
+    member private this.Tokens
+      with get() = this.Text.Split ' '

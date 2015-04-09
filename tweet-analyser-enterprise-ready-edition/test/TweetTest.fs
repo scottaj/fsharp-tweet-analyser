@@ -47,3 +47,18 @@ type ``a tweet with #hashtags`` ()=
   member x.``has an empty #hashtags list if the tweet has no hashtags`` ()=
     tweet.Text <- "no hashtags"
     tweet.HashTags |> should haveLength 0
+
+[<TestFixture>]
+type ``a tweet with mentions`` ()=
+  let tweet = Tweet("a tweet that mentions @someUser and @someOtherUser")
+
+  [<Test>]
+  member x.``has a list of mentions`` ()=
+    tweet.Mentions |> should haveLength 2
+    tweet.Mentions |> should contain "@someUser"
+    tweet.Mentions |> should contain "@someOtherUser"
+
+  [<Test>]
+  member x.``has an empty #mentions list if the tweet has no mentions`` ()=
+    tweet.Text <- "no mentions"
+    tweet.Mentions |> should haveLength 0
