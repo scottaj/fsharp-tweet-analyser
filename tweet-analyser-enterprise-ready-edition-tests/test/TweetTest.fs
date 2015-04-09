@@ -10,3 +10,12 @@ type ``a simple tweet`` ()=
   [<Test>]
   member x.``contains the tweet text`` ()=
     tweet.Text |> should equal "a simple tweet"
+
+  [<Test>]
+  member x.``contains the tweet length`` ()=
+    tweet.Length |> should equal 7
+
+  [<Test>]
+  member x.``updates the length when the text changes`` ()=
+    tweet.Text <- "new tweet"
+    tweet.Length |> should equal 9
